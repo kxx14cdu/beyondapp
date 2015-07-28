@@ -31,12 +31,12 @@ namespace bfb.net
 		 * Using the PCLStorage class, read the file 'data.json'
 		 * from the devices local filesystem.
 		 * Asynchronus method
-		*/
+
 		public static async Task<string> ReadLocalJSON () {
 			//Get the local filesystem app folder location
 			IFolder localFolder = FileSystem.Current.LocalStorage;
 			//Check if the local file exists
-			if(await FileSystem.Current.LocalStorage.CheckExistsAsync("data.json")) {
+			if(FileSystem.Current.LocalStorage.CheckExistsAsync("data.json")) {
 				//Obtain the file "data.json"
 				IFile localFile = await localFolder.GetFileAsync ("data.json");
 				//Return the contents of the file as a string
@@ -45,7 +45,7 @@ namespace bfb.net
 				return "none";
 			}
 		}
-
+*/
 	}
 }
 

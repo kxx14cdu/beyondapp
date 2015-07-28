@@ -29,6 +29,8 @@ namespace bfb.net
 				if (response.IsSuccessStatusCode) {
 					//Return the contents of the response
 					return await response.Content.ReadAsStringAsync ();
+				} else {
+					return "";
 				}
 			}
 		}
@@ -51,6 +53,8 @@ namespace bfb.net
 				if (response.IsSuccessStatusCode) {
 					//Return the contents of the response
 					return await response.Content.ReadAsStringAsync ();
+				} else {
+					return "";
 				}
 			}
 		}

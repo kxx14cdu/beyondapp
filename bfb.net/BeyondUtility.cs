@@ -34,14 +34,14 @@ namespace bfb.net
 		 * Simple function to compare the inputted remotehash string 
 		 * with the SHA256 hash of the local JSON file. Returns
 		 * true/false depending on if they match or not.
-		*/
+
 		public static bool CompareSHA (string remotehash) {
 			//Generate a SHA256 hash of the local JSON file
-			string localhash = SHA256Gen (BeyondFileStorage.ReadLocalJSON());
+			//string localhash = SHA256Gen (BeyondFileStorage.ReadLocalJSON());
 			//"none" is returned if their is no local JSON file, in this case
 			//say that the local file does not match the server in order to
 			//force an initial or new download of the data.
-			if (localhash = "none") {
+			if (localhash == "none") {
 				if (remotehash == localhash)
 					return true;
 				else 
@@ -49,7 +49,7 @@ namespace bfb.net
 			} else {
 				return false;
 			}
-		}
+		}*/
 
 		/* ConvertJSONToObjectModel
 		 * Returns an object of type BeyondRootObject deserialized
