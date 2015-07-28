@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using System.Text;
 using PCLCrypto;
 using PCLStorage;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace bfb.net
 {
@@ -34,9 +36,16 @@ namespace bfb.net
 		 * true/false depending on if they match or not.
 		*/
 		public static bool CompareSHA (string remotehash) {
+			//Generate a SHA256 hash of the local JSON file
 			string localhash = SHA256Gen (BeyondFileStorage.ReadLocalJSON());
-			if (remotehash == localhash) {
-				return true;
+			//"none" is returned if their is no local JSON file, in this case
+			//say that the local file does not match the server in order to
+			//force an initial or new download of the data.
+			if (localhash = "none") {
+				if (remotehash == localhash)
+					return true;
+				else 
+					return false;
 			} else {
 				return false;
 			}
@@ -44,10 +53,10 @@ namespace bfb.net
 
 		/* ConvertJSONToObjectModel
 		 * Returns an object of type BeyondRootObject deserialized
-		 * from the 
+		 * from the input JSON String using Newtonsoft JSON.NET
 		*/
-		public static dynamic ConvertJSONToObjectModel (string JSON) {
-			
+		public static BeyondRootModel ConvertJSONToObjectModel (string JSON) {
+			return JsonConvert.DeserializeObject<BeyondRootModel> (JSON);
 		}
 
 	}
