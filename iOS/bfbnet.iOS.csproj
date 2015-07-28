@@ -132,8 +132,12 @@
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
     <BundleResource Include="Resources\Orbitron-Bold.ttf" />
     <BundleResource Include="Resources\Orbitron-Regular.ttf" />
-    <BundleResource Include="Resources\1.jpg" />
     <BundleResource Include="Resources\2.jpg" />
+    <BundleResource Include="Resources\1%402x.png" />
+    <BundleResource Include="Resources\1%402x~iphone.jpg" />
+    <BundleResource Include="Resources\1%403x.jpg" />
+    <BundleResource Include="Resources\1~ipad.jpg" />
+    <BundleResource Include="Resources\1.jpg" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />

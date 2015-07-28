@@ -8,7 +8,7 @@ namespace bfbnet
 		public App ()
 		{
 			MainPage = new NavigationPage (new LoadingPage ()) {
-				BarBackgroundColor = Color.FromHex("0A4852"),
+				BarBackgroundColor = Color.FromHex("007DA1"),
 				BarTextColor = Color.White
 			};
 		}
