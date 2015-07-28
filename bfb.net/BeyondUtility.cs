@@ -12,31 +12,31 @@ namespace bfbnet
 	*/
 	public class BeyondUtility
 	{
-		/* SHA256Gen
-		 * Using the PCLCrypto library a new SHA256 algorithm provider
+		/*StringGen
+		 * Using the PCLCrypto library a newMD5 algorithm provider
 		 * is intialised. The string input is converted to a binary array
-		 * and then hashed using the SHA256 algorithm. This is then returned
-		 * as a hexadecimal string representation
+		 * and then hashed using theMD5 algorithm. This is then returned
+		 * as a base64 string representation
 		*/
-		public static string SHA256Gen (String input) {
-			//Create a SHA256 Algorithm provider
-			var provider = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm (HashAlgorithm.Sha256);
+		public static string MD5Gen (String input) {
+			//Create MD5 Algorithm provider
+			var provider = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm (HashAlgorithm.Md5);
 			//Convert the input string to binary using UTF8 encoding
 			var inputBinary = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary (input, Encoding.UTF8);
 			//Generate a hash of the data
 			var hash = provider.HashData (inputBinary);
-			//Return the hash as a hexadecimal string
-			return WinRTCrypto.CryptographicBuffer.EncodeToHexString (hash);
+			//Return the hash as a base64 string
+			return WinRTCrypto.CryptographicBuffer.EncodeToBase64String (hash);
 		}
 	
 		/* CompareSHA
 		 * Simple function to compare the inputted remotehash string 
-		 * with the SHA256 hash of the local JSON file. Returns
+		 * with theMD5 hash of the local JSON file. Returns
 		 * true/false depending on if they match or not.
 		*/
-		public static bool CompareSHA (string remotehash, String localjson) {
-			//Generate a SHA256 hash of the local JSON file
-			String localhash = SHA256Gen (localjson);
+		public static bool CompareMD5 (string remotehash, String localjson) {
+			//Generate aMD5 hash of the local JSON file
+			String localhash = MD5Gen (localjson);
 			System.Diagnostics.Debug.WriteLine ("local: " + localhash);
 			System.Diagnostics.Debug.WriteLine ("remote: " + remotehash);
 			//"none" is returned if there is no local JSON file, in this case
