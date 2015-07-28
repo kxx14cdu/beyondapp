@@ -7,8 +7,10 @@ namespace bfbnet
 	{
 		public App ()
 		{
-			LoadingPage mainapplication = new LoadingPage ();
-			MainPage = mainapplication;
+			MainPage = new NavigationPage (new LoadingPage ()) {
+				BarBackgroundColor = Color.FromHex("0A4852"),
+				BarTextColor = Color.White
+			};
 		}
 
 		protected override void OnStart ()

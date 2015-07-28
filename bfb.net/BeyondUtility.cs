@@ -7,16 +7,18 @@ using Newtonsoft.Json;
 
 namespace bfbnet
 {
+	public interface IBaseUrl { string Get(); }
+
 	/* BeyondFUtility
 	 * Static utility helper methods
 	*/
 	public class BeyondUtility
 	{
-		/*StringGen
+		/* StringGen
 		 * Using the PCLCrypto library a newMD5 algorithm provider
 		 * is intialised. The string input is converted to a binary array
 		 * and then hashed using theMD5 algorithm. This is then returned
-		 * as a base64 string representation
+		 * as a hexadecimal string representation
 		*/
 		public static string MD5Gen (String input) {
 			//Create MD5 Algorithm provider
@@ -25,8 +27,8 @@ namespace bfbnet
 			var inputBinary = WinRTCrypto.CryptographicBuffer.ConvertStringToBinary (input, Encoding.UTF8);
 			//Generate a hash of the data
 			var hash = provider.HashData (inputBinary);
-			//Return the hash as a base64 string
-			return WinRTCrypto.CryptographicBuffer.EncodeToBase64String (hash);
+			//Return the hash as a hexadecimal string
+			return WinRTCrypto.CryptographicBuffer.EncodeToHexString (hash);
 		}
 	
 		/* CompareSHA
@@ -37,13 +39,11 @@ namespace bfbnet
 		public static bool CompareMD5 (string remotehash, String localjson) {
 			//Generate aMD5 hash of the local JSON file
 			String localhash = MD5Gen (localjson);
-			System.Diagnostics.Debug.WriteLine ("local: " + localhash);
-			System.Diagnostics.Debug.WriteLine ("remote: " + remotehash);
 			//"none" is returned if there is no local JSON file, in this case
 			//say that the local file does not match the server in order to
 			//force an initial or new download of the data.
-			if (localhash == "none") {
-				if (remotehash == localhash)
+			if (localhash != "none") {
+				if (localhash == remotehash)
 					return true;
 				else 
 					return false;

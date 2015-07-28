@@ -14,6 +14,7 @@ namespace bfbnet
 	public class BeyondRootModel
 	{
 		public String pageName { get; set; }
+		public String pageType { get; set; }
 		public String slideRightImage { get; set; }
 		public String slideContent { get; set; }
 		public List<BeyondCharacterModel> characters { get; set; }
