@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Connectivity.Plugin;
 
-namespace bfb.net
+namespace bfbnet
 {
 	public class LoadingPage : ContentPage
 	{
@@ -58,7 +58,10 @@ namespace bfb.net
 							//File matches the server, therefore do not download
 							//a new file and start the application using the local copy
 							string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
-							BeyondRootModel beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+							BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+							foreach(var item in beyondModel) {
+								System.Diagnostics.Debug.WriteLine(item.pageName);
+							}
 						} else {
 							//File does not exist therefore download a new copy of the data
 							//and launch the application
@@ -68,7 +71,10 @@ namespace bfb.net
 								progressStatusLabel.Text = "Starting application";
 								//The file was downloaded successfully, read the file and launch the application
 								string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
-								BeyondRootModel beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+								BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+								foreach(var item in beyondModel) {
+									System.Diagnostics.Debug.WriteLine(item.pageName);
+								}
 							} else {
 								//The file was not downloaded, successfully therefore display an error message
 								await this.DisplayAlert("Error","The file could not be created. Please check that you have enough disk space and try again","Ok");
@@ -83,7 +89,10 @@ namespace bfb.net
 							progressStatusLabel.Text = "Starting Application";
 							//The file was downloaded successfully, read the file and launch the application
 							string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
-							BeyondRootModel beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+							BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+							foreach(var item in beyondModel) {
+								System.Diagnostics.Debug.WriteLine(item.pageName);
+							}
 						} else {
 							//The file was not downloaded, successfully therefore display an error message
 							progressStatusLabel.Text = "Failed";
@@ -98,7 +107,10 @@ namespace bfb.net
 						progressStatusLabel.Text = "Starting application";
 						//The file was downloaded successfully, read the file and launch the application
 						string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
-						BeyondRootModel beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+						BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+						foreach(var item in beyondModel) {
+							System.Diagnostics.Debug.WriteLine(item.pageName);
+						}
 					} else {
 						progressStatusLabel.Text = "Internet connection not detected";
 						//The file does not exist therefore no data is present.

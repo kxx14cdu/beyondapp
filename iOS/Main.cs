@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace bfb.net.iOS
+namespace bfbnet.iOS
 {
 	public class Application
 	{

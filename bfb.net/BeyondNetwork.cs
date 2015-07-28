@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net.Http.Headers;
 
-namespace bfb.net
+namespace bfbnet
 {
 	/* BeyondNetwork
 	 * Static helper methods for network access. All functions are threaded

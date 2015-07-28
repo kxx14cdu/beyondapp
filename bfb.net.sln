@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bfb.net", "bfb.net\bfb.net.csproj", "{26E45F07-A969-4708-85F7-FB8631386722}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bfbnet", "bfb.net\bfbnet.csproj", "{26E45F07-A969-4708-85F7-FB8631386722}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bfb.net.iOS", "iOS\bfb.net.iOS.csproj", "{3DEFAAD1-B7ED-4231-BAA2-D5298A374F06}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bfbnet.iOS", "iOS\bfbnet.iOS.csproj", "{3DEFAAD1-B7ED-4231-BAA2-D5298A374F06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bfb.net.Droid", "Droid\bfb.net.Droid.csproj", "{3C8ADCFB-26B6-4A1E-930A-0189D6C23FA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bfbnet.Droid", "Droid\bfbnet.Droid.csproj", "{3C8ADCFB-26B6-4A1E-930A-0189D6C23FA8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

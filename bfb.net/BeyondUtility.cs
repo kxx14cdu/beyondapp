@@ -4,9 +4,8 @@ using System.Text;
 using PCLCrypto;
 using PCLStorage;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
-namespace bfb.net
+namespace bfbnet
 {
 	/* BeyondFUtility
 	 * Static utility helper methods
@@ -58,8 +57,8 @@ namespace bfb.net
 		 * Returns an object of type BeyondRootObject deserialized
 		 * from the input JSON String using Newtonsoft JSON.NET
 		*/
-		public static BeyondRootModel ConvertJSONToObjectModel (string JSON) {
-			return JsonConvert.DeserializeObject<BeyondRootModel> (JSON);
+		public static BeyondRootModel[] ConvertJSONToObjectModel (string JSON) {
+			return JsonConvert.DeserializeObject<BeyondRootModel[]> (JSON);
 		}
 
 	}

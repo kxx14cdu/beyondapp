@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace bfb.net
+namespace bfbnet
 {
 	public class BeyondCharacterModel
 	{

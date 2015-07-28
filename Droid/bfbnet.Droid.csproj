@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{3C8ADCFB-26B6-4A1E-930A-0189D6C23FA8}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>bfb.net.Droid</RootNamespace>
+    <RootNamespace>bfbnet.Droid</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
@@ -90,9 +90,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bfb.net\bfb.net.csproj">
+    <ProjectReference Include="..\bfb.net\bfbnet.csproj">
       <Project>{26E45F07-A969-4708-85F7-FB8631386722}</Project>
-      <Name>bfb.net</Name>
+      <Name>bfbnet</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

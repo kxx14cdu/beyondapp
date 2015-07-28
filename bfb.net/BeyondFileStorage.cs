@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using PCLStorage;
 
-namespace bfb.net
+namespace bfbnet
 {
 	/* BeyondFileStorage
 	 * Static helper methods for file storage access/writing

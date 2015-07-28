@@ -6,7 +6,7 @@
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{3DEFAAD1-B7ED-4231-BAA2-D5298A374F06}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>bfb.net.iOS</RootNamespace>
+    <RootNamespace>bfbnet.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>bfb.net.iOS</AssemblyName>
   </PropertyGroup>
@@ -106,9 +106,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\bfb.net\bfb.net.csproj">
+    <ProjectReference Include="..\bfb.net\bfbnet.csproj">
       <Project>{26E45F07-A969-4708-85F7-FB8631386722}</Project>
-      <Name>bfb.net</Name>
+      <Name>bfbnet</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

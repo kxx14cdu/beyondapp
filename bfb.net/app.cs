@@ -1,7 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 
-namespace bfb.net
+namespace bfbnet
 {
 	public class App : Application
 	{
@@ -26,4 +26,3 @@ namespace bfb.net
 	}
 }
 
-s
