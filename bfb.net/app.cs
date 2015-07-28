@@ -7,7 +7,8 @@ namespace bfb.net
 	{
 		public App ()
 		{
-			
+			LoadingPage mainapplication = new LoadingPage ();
+			MainPage = mainapplication;
 		}
 
 		protected override void OnStart ()
@@ -25,3 +26,4 @@ namespace bfb.net
 	}
 }
 
+s

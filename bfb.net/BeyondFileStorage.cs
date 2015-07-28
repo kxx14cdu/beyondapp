@@ -27,16 +27,31 @@ namespace bfb.net
 			await localFile.WriteAllTextAsync (JSON);
 		}
 
+		/* CheckJSONExists
+		 * Using the PCLStorage class, check that a local copy of the
+		 * data exists
+		 * Asynchronus method
+		 */
+		public static async Task<bool> CheckJSONExists () {
+			//Get the local filesystem app folder location
+			IFolder localFolder = FileSystem.Current.LocalStorage;
+			//Check if the local file exists
+			if (await FileSystem.Current.LocalStorage.CheckExistsAsync ("data.json") != ExistenceCheckResult.NotFound)
+				return true;
+			else
+				return false;
+		}
+
 		/* ReadLocalJSON
 		 * Using the PCLStorage class, read the file 'data.json'
 		 * from the devices local filesystem.
 		 * Asynchronus method
-
+		 */
 		public static async Task<string> ReadLocalJSON () {
 			//Get the local filesystem app folder location
 			IFolder localFolder = FileSystem.Current.LocalStorage;
 			//Check if the local file exists
-			if(FileSystem.Current.LocalStorage.CheckExistsAsync("data.json")) {
+			if(await CheckJSONExists()) {
 				//Obtain the file "data.json"
 				IFile localFile = await localFolder.GetFileAsync ("data.json");
 				//Return the contents of the file as a string
@@ -45,7 +60,6 @@ namespace bfb.net
 				return "none";
 			}
 		}
-*/
 	}
 }
 
