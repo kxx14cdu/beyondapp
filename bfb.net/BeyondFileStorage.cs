@@ -17,7 +17,7 @@ namespace bfbnet
 		 * overwrote.
 		 * Asynchronus method
 		*/
-		public static async Task CreateLocalJSON (string JSON) {
+		public static async Task CreateLocalJSON (String JSON) {
 			//Get the local filesystem app folder location
 			IFolder localFolder = FileSystem.Current.LocalStorage;
 			//Create a file called "data.json" overwritting any existing file
@@ -47,7 +47,7 @@ namespace bfbnet
 		 * from the devices local filesystem.
 		 * Asynchronus method
 		 */
-		public static async Task<string> ReadLocalJSON () {
+		public static async Task<String> ReadLocalJSON () {
 			//Get the local filesystem app folder location
 			IFolder localFolder = FileSystem.Current.LocalStorage;
 			//Check if the local file exists

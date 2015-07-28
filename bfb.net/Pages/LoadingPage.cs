@@ -52,12 +52,13 @@ namespace bfbnet
 						progressStatusLabel.Text = "Local copy of the data exists";
 						//File exists therefore check the file against the server data
 						progressStatusLabel.Text = "Retrieving remote hash";
-						string remoteHash = await BeyondNetwork.DownloadSHAHash ();
-						if(BeyondUtility.CompareSHA(remoteHash)) {
+						String remoteHash = await BeyondNetwork.DownloadSHAHash ();
+						//Obtain the local file and store it as string LocalJSON
+						String LocalJSON = await BeyondFileStorage.ReadLocalJSON ();
+						if(BeyondUtility.CompareSHA(remoteHash, LocalJSON)) {
 							progressStatusLabel.Text = "No changes detected. Starting application";
 							//File matches the server, therefore do not download
 							//a new file and start the application using the local copy
-							string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
 							BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
 							foreach(var item in beyondModel) {
 								System.Diagnostics.Debug.WriteLine(item.pageName);
@@ -70,7 +71,7 @@ namespace bfbnet
 							if(await BeyondFileStorage.CheckJSONExists ()) {
 								progressStatusLabel.Text = "Starting application";
 								//The file was downloaded successfully, read the file and launch the application
-								string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
+								String LocalJSON = await BeyondFileStorage.ReadLocalJSON();
 								BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
 								foreach(var item in beyondModel) {
 									System.Diagnostics.Debug.WriteLine(item.pageName);
@@ -88,7 +89,7 @@ namespace bfbnet
 						if(await BeyondFileStorage.CheckJSONExists ()) {
 							progressStatusLabel.Text = "Starting Application";
 							//The file was downloaded successfully, read the file and launch the application
-							string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
+							String LocalJSON = await BeyondFileStorage.ReadLocalJSON();
 							BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
 							foreach(var item in beyondModel) {
 								System.Diagnostics.Debug.WriteLine(item.pageName);
@@ -106,7 +107,7 @@ namespace bfbnet
 					if(await BeyondFileStorage.CheckJSONExists ()) {
 						progressStatusLabel.Text = "Starting application";
 						//The file was downloaded successfully, read the file and launch the application
-						string LocalJSON = await BeyondFileStorage.ReadLocalJSON();
+						String LocalJSON = await BeyondFileStorage.ReadLocalJSON();
 						BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
 						foreach(var item in beyondModel) {
 							System.Diagnostics.Debug.WriteLine(item.pageName);

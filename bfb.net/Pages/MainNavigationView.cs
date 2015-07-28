@@ -5,7 +5,7 @@ namespace bfbnet
 {
 	public class MainNavigationView : NavigationPage
 	{
-		public MainNavigationView ()
+		public MainNavigationView (BeyondRootModel[] Pages)
 		{
 		}
 	}

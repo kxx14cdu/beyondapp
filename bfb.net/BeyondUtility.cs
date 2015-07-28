@@ -18,7 +18,7 @@ namespace bfbnet
 		 * and then hashed using the SHA256 algorithm. This is then returned
 		 * as a hexadecimal string representation
 		*/
-		public static string SHA256Gen (string input) {
+		public static string SHA256Gen (String input) {
 			//Create a SHA256 Algorithm provider
 			var provider = WinRTCrypto.HashAlgorithmProvider.OpenAlgorithm (HashAlgorithm.Sha256);
 			//Convert the input string to binary using UTF8 encoding
@@ -34,12 +34,11 @@ namespace bfbnet
 		 * with the SHA256 hash of the local JSON file. Returns
 		 * true/false depending on if they match or not.
 		*/
-		public static bool CompareSHA (string remotehash) {
+		public static bool CompareSHA (string remotehash, String localjson) {
 			//Generate a SHA256 hash of the local JSON file
-			string localhash = "";
-			Device.BeginInvokeOnMainThread (async() => {
-				localhash = SHA256Gen (await BeyondFileStorage.ReadLocalJSON());
-			});
+			String localhash = SHA256Gen (localjson);
+			System.Diagnostics.Debug.WriteLine ("local: " + localhash);
+			System.Diagnostics.Debug.WriteLine ("remote: " + remotehash);
 			//"none" is returned if there is no local JSON file, in this case
 			//say that the local file does not match the server in order to
 			//force an initial or new download of the data.
@@ -57,7 +56,7 @@ namespace bfbnet
 		 * Returns an object of type BeyondRootObject deserialized
 		 * from the input JSON String using Newtonsoft JSON.NET
 		*/
-		public static BeyondRootModel[] ConvertJSONToObjectModel (string JSON) {
+		public static BeyondRootModel[] ConvertJSONToObjectModel (String JSON) {
 			return JsonConvert.DeserializeObject<BeyondRootModel[]> (JSON);
 		}
 

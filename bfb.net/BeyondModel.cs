@@ -5,22 +5,22 @@ namespace bfbnet
 {
 	public class BeyondCharacterModel
 	{
-		public string pageName { get; set; }
-		public string characterRightHandSideImage { get; set; }
-		public string characterDescription { get; set; }
-		public string characterStats { get; set; }
-		public IList<string> characterScreenshotsConceptArt { get; set; }
+		public String pageName { get; set; }
+		public String characterRightHandSideImage { get; set; }
+		public String characterDescription { get; set; }
+		public String characterStats { get; set; }
+		public List<String> characterScreenshotsConceptArt { get; set; }
 	}
 	public class BeyondRootModel
 	{
-		public string pageName { get; set; }
-		public string slideRightImage { get; set; }
-		public string slideContent { get; set; }
-		public IList<BeyondCharacterModel> characters { get; set; }
-		public IList<string> screenshots { get; set; }
-		public IList<string> conceptart { get; set; }
-		public string copyrightBox { get; set; }
-		public string copyrightInformation { get; set; }
+		public String pageName { get; set; }
+		public String slideRightImage { get; set; }
+		public String slideContent { get; set; }
+		public List<BeyondCharacterModel> characters { get; set; }
+		public List<String> screenshots { get; set; }
+		public List<String> conceptart { get; set; }
+		public String copyrightBox { get; set; }
+		public String copyrightInformation { get; set; }
 	}
 }
 
