@@ -31,13 +31,13 @@ namespace bfbnet
 			storyImage.Source = ImageSource.FromStream (() => new MemoryStream (ImageBase64));
 
 			ContentView webviewholder = new ContentView () {
-				BackgroundColor = Color.FromRgba(0,0,0,0.5),
+				BackgroundColor = Color.FromRgba(0,74,97,0.9),
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
 			ContentView imageholder = new ContentView () {
-				BackgroundColor = Color.FromRgba(0,0,0,0.5),
+				BackgroundColor = Color.FromRgba(0,31,49,0.9),
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
