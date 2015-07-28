@@ -5,9 +5,9 @@ using System.Net;
 
 namespace bfbnet
 {
-	public class StoryPage : ContentPage
+	public class CharacterViewPage : ContentPage
 	{
-		public StoryPage (BeyondRootModel Page)
+		public CharacterViewPage (BeyondCharacterModel Page)
 		{
 			StackLayout pageContent = new StackLayout ();
 
@@ -20,13 +20,13 @@ namespace bfbnet
 			};
 
 			Image backgroundImage = new Image () {
-				Source = "2.jpg",
+				Source = "4.jpg",
 				Aspect = Aspect.AspectFill
 			};
 
 			this.Title = Page.pageName;
 
-			Byte[] ImageBase64 = System.Convert.FromBase64String(Page.slideRightImage);
+			Byte[] ImageBase64 = System.Convert.FromBase64String(Page.characterRightHandSideImage);
 
 			storyImage.Source = ImageSource.FromStream (() => new MemoryStream (ImageBase64));
 
@@ -53,7 +53,7 @@ namespace bfbnet
 
 			var htmlSource = new HtmlWebViewSource ();
 
-			htmlSource.Html = @"<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;color:#fff;overflow-x:hidden;}</style>" + Page.slideContent;
+			htmlSource.Html = @"<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;color:#fff;overflow-x:hidden;}</style>" + Page.characterDescription;
 
 			browser.Source = htmlSource;
 
@@ -64,11 +64,11 @@ namespace bfbnet
 
 			layout.Children.Add (backgroundImage, Constraint.Constant (0), Constraint.Constant (0), 
 				Constraint.RelativeToParent ((parent) => {
-				return parent.Width;
-			}), 
+					return parent.Width;
+				}), 
 				Constraint.RelativeToParent ((parent) => {
-				return parent.Height;
-			}));
+					return parent.Height;
+				}));
 
 			layout.Children.Add (scrollContent, Constraint.Constant (0), Constraint.Constant (0), 
 				Constraint.RelativeToParent ((parent) => {
@@ -77,7 +77,7 @@ namespace bfbnet
 				Constraint.RelativeToParent ((parent) => {
 					return parent.Height;
 				}));
-					
+
 			pageContent.Children.Add (imageholder);
 			pageContent.Children.Add (webviewholder); 
 

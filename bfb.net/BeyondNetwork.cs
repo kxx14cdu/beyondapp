@@ -16,7 +16,7 @@ namespace bfbnet
 		 * and return it as a string.
 		 * Asynchronus method
 		*/
-		public static async Task<string> DownloadSHAHash () {
+		public static async Task<String> DownloadSHAHash () {
 			//New HttpClient instance
 			using (HttpClient client = new HttpClient ()) {
 				//Set the base address and the headers
@@ -35,12 +35,13 @@ namespace bfbnet
 			}
 		}
 
+
 		/* DownloadJSONData
 		 * Using HttpClient connect to the webserver
 		 * and download the current JSON data and return it as a string.
 		 * Asynchronus method
 		*/
-		public static async Task<string> DownloadJSONData () {
+		public static async Task<String> DownloadJSONData () {
 			//New HttpClient instance
 			using (HttpClient client = new HttpClient ()) {
 				//Set the base address and the headers
