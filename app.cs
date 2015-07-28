@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Xamarin.Forms;
 
 namespace bfb.net
@@ -7,20 +8,23 @@ namespace bfb.net
 	{
 		public App ()
 		{
+			
 		}
 
 		protected override void OnStart ()
 		{
+			
 		}
 
 		protected override void OnSleep ()
 		{
+			
 		}
 
 		protected override void OnResume ()
 		{
+			
 		}
-
 	}
 }
 
