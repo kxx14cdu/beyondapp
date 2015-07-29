@@ -5,8 +5,8 @@ namespace bfbnet
 {
 	public class TransparentWebView : WebView
 	{
-		public TransparentWebView () {
-		}
+		public TransparentWebView() {}
+
 	}
 }
 

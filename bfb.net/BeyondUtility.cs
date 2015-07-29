@@ -4,6 +4,7 @@ using System.Text;
 using PCLCrypto;
 using PCLStorage;
 using Newtonsoft.Json;
+using Xamarin.Forms.Labs;
 
 namespace bfbnet
 {

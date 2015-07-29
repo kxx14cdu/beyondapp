@@ -19,28 +19,56 @@ namespace bfbnet
 		 */
 		public LoadingPage ()
 		{
-			//Create a new activity indicator
+			NavigationPage.SetBackButtonTitle (this, "Back");
+		//Create a new activity indicator
 			ActivityIndicator progressIndicator = new ActivityIndicator () {
-				VerticalOptions = LayoutOptions.Center,
-				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				IsEnabled = true,
-				IsRunning = true
+				IsRunning = true,
+				Color = Color.White,
+				Scale = 2.5
 			};
-			//Create a new label to store the current progress tatus
-			Label progressStatusLabel = new Label () {
-				VerticalOptions = LayoutOptions.Center,
-				HorizontalOptions = LayoutOptions.Center
+			Image backgroundImage = new Image () {
+				Source = "1.jpg",
+				Aspect = Aspect.AspectFill
 			};
 			//Create a new stack layout
 			StackLayout pageLayout = new StackLayout () {
 				VerticalOptions = LayoutOptions.Center,
 				HorizontalOptions = LayoutOptions.Center,
+				Spacing = 15
+			};
+			//Create a new relative layout for the background and stuff
+			RelativeLayout layout = new RelativeLayout ();
+
+			layout.Children.Add (backgroundImage, Constraint.Constant (0), Constraint.Constant (0), 
+				Constraint.RelativeToParent ((parent) => {
+					return parent.Width;
+				}), 
+				Constraint.RelativeToParent ((parent) => {
+					return parent.Height;
+				}));
+
+			layout.Children.Add (pageLayout, Constraint.Constant (0), Constraint.Constant (0), 
+				Constraint.RelativeToParent ((parent) => {
+					return parent.Width;
+				}), 
+				Constraint.RelativeToParent ((parent) => {
+					return parent.Height;
+				}));
+			//Create a new label to store the current progress tatus
+			Label progressStatusLabel = new Label () {
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				FontFamily = Device.OnPlatform ("Orbitron",null,null),
+				TextColor = Color.White
 			};
 			//Pop the activity indicator and the label into the stack layout
 			pageLayout.Children.Add (progressIndicator);
 			pageLayout.Children.Add (progressStatusLabel);
 			//Set the stacklayout to be the content of this page
-			this.Content = pageLayout;
+			this.Content = layout;
 			this.Title = "Loading...";
 			//Check for an Internet connection
 			//Invoke the method asynchronusly on the main thread

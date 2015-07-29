@@ -80,5 +80,9 @@
 	</dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Orbitron.ttf</string>
+	</array>
 </dict>
 </plist>

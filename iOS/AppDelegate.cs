@@ -4,6 +4,9 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using Xamarin.Forms.Labs.Services;
+using Xamarin.Forms.Labs;
+using Xamarin.Forms;
 
 namespace bfbnet.iOS
 {
@@ -17,6 +20,15 @@ namespace bfbnet.iOS
 			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
 
 			LoadApplication (new App ());
+		
+			UITextAttributes attr = UINavigationBar.Appearance.GetTitleTextAttributes();
+			UITextAttributes attr2 = UIBarButtonItem.Appearance.GetTitleTextAttributes(UIControlState.Normal);
+
+			attr.Font = UIFont.FromName ("Orbitron", 18);
+			attr2.Font = UIFont.FromName ("Orbitron", 18);
+
+			UIBarButtonItem.Appearance.SetTitleTextAttributes(attr2, UIControlState.Normal);
+			UINavigationBar.Appearance.SetTitleTextAttributes(attr);
 
 			return base.FinishedLaunching (app, options);
 		}

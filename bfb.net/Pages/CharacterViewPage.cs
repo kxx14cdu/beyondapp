@@ -11,12 +11,14 @@ namespace bfbnet
 		{
 			StackLayout pageContent = new StackLayout ();
 
+			NavigationPage.SetBackButtonTitle (this, "Back");
+
 			ScrollView scrollContent = new ScrollView {
 				Content = pageContent
 			};
 
 			Image storyImage = new Image () {
-				Aspect = Aspect.AspectFit
+				Scale = 0.5
 			};
 
 			Image backgroundImage = new Image () {
@@ -34,15 +36,15 @@ namespace bfbnet
 			Color background_alt = new Color (0, 0, 0, 0.5);
 
 			ContentView webviewholder = new ContentView () {
-				BackgroundColor = background_alt,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand
+				BackgroundColor = background_alt
+			};
+
+			ContentView statsviewholder = new ContentView () {
+				BackgroundColor = background_alt
 			};
 
 			ContentView imageholder = new ContentView () {
-				BackgroundColor = background,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand
+				BackgroundColor = background
 			};
 
 			var browser = new TransparentWebView () {
@@ -53,11 +55,24 @@ namespace bfbnet
 
 			var htmlSource = new HtmlWebViewSource ();
 
-			htmlSource.Html = @"<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;color:#fff;overflow-x:hidden;}</style>" + Page.characterDescription;
+			htmlSource.Html = @"<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;font-size:1.5em;color:#fff;overflow-x:hidden;}</style>" + Page.characterDescription;
 
 			browser.Source = htmlSource;
 
+			var statsbrowser = new TransparentWebView () {
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				BackgroundColor = Color.Transparent
+			};
+
+			var statshtmlSource = new HtmlWebViewSource ();
+
+			statshtmlSource.Html = @"<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;font-size:1.5em;color:#fff;overflow-x:hidden;}</style>" + Page.characterStats;
+
+			statsbrowser.Source = statshtmlSource;
+
 			webviewholder.Content = browser;
+			statsviewholder.Content = statsbrowser;
 			imageholder.Content = storyImage;
 
 			RelativeLayout layout = new RelativeLayout ();
@@ -80,6 +95,7 @@ namespace bfbnet
 
 			pageContent.Children.Add (imageholder);
 			pageContent.Children.Add (webviewholder); 
+			pageContent.Children.Add (statsviewholder);
 
 			this.Content = layout;
 		}

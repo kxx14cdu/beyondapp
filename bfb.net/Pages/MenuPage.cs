@@ -9,8 +9,11 @@ namespace bfbnet
 		{
 			StackLayout buttonList = new StackLayout {
 				Spacing = 15,
+				Padding = new Thickness(15,15,15,0),
 				VerticalOptions = LayoutOptions.Center
 			};
+
+			NavigationPage.SetBackButtonTitle (this, "Back");
 
 			Image backgroundImage = new Image () {
 				Source = "1.jpg",

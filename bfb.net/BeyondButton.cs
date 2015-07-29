@@ -10,6 +10,8 @@ namespace bfbnet
 			BorderWidth = 2;
 			BorderColor = Color.FromHex ("006C88");
 			BackgroundColor = Color.FromHex ("002C3C");
+			TextColor = Color.White;
+			FontFamily = Device.OnPlatform ("Orbitron",null,null);
 		}
 	}
 }

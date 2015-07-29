@@ -107,6 +107,18 @@
     <Reference Include="Connectivity.Plugin.Abstractions">
       <HintPath>..\packages\Xam.Plugin.Connectivity.1.0.2\lib\Xamarin.iOS10\Connectivity.Plugin.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="ExifLib">
+      <HintPath>..\packages\ExifLib.PCL.1.0.0\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Labs">
+      <HintPath>..\packages\Xamarin.Forms.Labs.1.0.1.5\lib\portable-net45+win+wp80+MonoAndroid10+MonoTouch10\Xamarin.Forms.Labs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.DeviceInfo">
+      <HintPath>..\packages\Acr.DeviceInfo.2.2.0\lib\Xamarin.iOS10\Acr.DeviceInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.DeviceInfo.Interface">
+      <HintPath>..\packages\Acr.DeviceInfo.2.2.0\lib\Xamarin.iOS10\Acr.DeviceInfo.Interface.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\bfb.net\bfbnet.csproj">
@@ -130,8 +142,6 @@
     <BundleResource Include="Resources\Icon-Small-40.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Orbitron-Bold.ttf" />
-    <BundleResource Include="Resources\Orbitron-Regular.ttf" />
     <BundleResource Include="Resources\2.jpg" />
     <BundleResource Include="Resources\1%402x.png" />
     <BundleResource Include="Resources\1%402x~iphone.jpg" />
@@ -141,6 +151,9 @@
     <BundleResource Include="Resources\logo.png" />
     <BundleResource Include="Resources\3.jpg" />
     <BundleResource Include="Resources\4.jpg" />
+    <BundleResource Include="Resources\Orbitron.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -155,6 +168,7 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="TransparentWebViewRenderer.cs" />
+    <Compile Include="OrbitronNavigationRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="ITunesArtwork" />

@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using System.IO;
 using System.Net;
+using Xamarin.Forms.Labs;
+using Acr.DeviceInfo;
 
 namespace bfbnet
 {
@@ -9,14 +11,19 @@ namespace bfbnet
 	{
 		public StoryPage (BeyondRootModel Page)
 		{
+
+			
+
 			StackLayout pageContent = new StackLayout ();
 
 			ScrollView scrollContent = new ScrollView {
-				Content = pageContent
+				Content = pageContent,
+				HorizontalOptions = LayoutOptions.Fill,
+				VerticalOptions = LayoutOptions.Fill
 			};
 
 			Image storyImage = new Image () {
-				Aspect = Aspect.AspectFit
+				Scale = 1.2
 			};
 
 			Image backgroundImage = new Image () {
@@ -35,25 +42,27 @@ namespace bfbnet
 
 			ContentView webviewholder = new ContentView () {
 				BackgroundColor = background_alt,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
-				VerticalOptions = LayoutOptions.FillAndExpand
+				HorizontalOptions = LayoutOptions.Fill,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				WidthRequest = DeviceInfo.Instance.ScreenWidth
 			};
 
 			ContentView imageholder = new ContentView () {
 				BackgroundColor = background,
-				HorizontalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
 			var browser = new TransparentWebView () {
-				HorizontalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.Transparent
+				BackgroundColor = Color.Transparent,
+				WidthRequest = DeviceInfo.Instance.ScreenWidth
 			};
 
 			var htmlSource = new HtmlWebViewSource ();
 
-			htmlSource.Html = @"<link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;color:#fff;overflow-x:hidden;}</style>" + Page.slideContent;
+			htmlSource.Html = @"<meta name=""viewport"" content=""width=device-width"" /><link href='http://fonts.googleapis.com/css?family=Orbitron:400,700' rel='stylesheet' type='text/css'><style>body{font-family: 'Orbitron', sans-serif;color:#fff;overflow-x:hidden;}</style>" + Page.slideContent;
 
 			browser.Source = htmlSource;
 
