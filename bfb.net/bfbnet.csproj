@@ -33,7 +33,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="app.cs" />
     <Compile Include="BeyondModel.cs" />
-    <Compile Include="Pages\MenuPage.cs" />
     <Compile Include="Pages\MainNavigationView.cs" />
     <Compile Include="Pages\StoryPage.cs" />
     <Compile Include="BeyondUtility.cs" />
@@ -44,6 +43,7 @@
     <Compile Include="BeyondButton.cs" />
     <Compile Include="Pages\Characterpage.cs" />
     <Compile Include="Pages\CharacterViewPage.cs" />
+    <Compile Include="Pages\MenuPage.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.4.4.6387\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.4.4.6387\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
