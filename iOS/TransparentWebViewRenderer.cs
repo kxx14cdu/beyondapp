@@ -24,11 +24,10 @@ namespace bfbnet.iOS
 			this.Opaque = false;
 			this.BackgroundColor = UIColor.Clear;
 			this.ScrollView.ScrollEnabled = false;
-			this.ScrollView.Frame = this.Bounds;
-			this.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
-			this.ClipsToBounds = true;
-			this.Reload ();
-			this.Frame = new CGRect(0, 0, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			this.AutoresizingMask = UIViewAutoresizing.All;
+			if (e.OldElement == null) {
+				this.Frame = new CGRect (0, 0, UIScreen.MainScreen.Bounds.Width, UIScreen.MainScreen.Bounds.Height);
+			}
 		}
 
 	}
