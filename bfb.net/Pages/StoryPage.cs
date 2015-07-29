@@ -12,13 +12,19 @@ namespace bfbnet
 		public StoryPage (BeyondRootModel Page)
 		{
 
-			
-
-			StackLayout pageContent = new StackLayout ();
+			Grid pageContent = new Grid {
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				RowDefinitions = {
+					new RowDefinition { Height = GridLength.Auto },
+					new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
+				},
+				ColumnDefinitions = {
+					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
+				}
+			};
 
 			ScrollView scrollContent = new ScrollView {
 				Content = pageContent,
-				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.Fill
 			};
 
@@ -42,22 +48,18 @@ namespace bfbnet
 
 			ContentView webviewholder = new ContentView () {
 				BackgroundColor = background_alt,
-				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				WidthRequest = DeviceInfo.Instance.ScreenWidth
 			};
 
 			ContentView imageholder = new ContentView () {
 				BackgroundColor = background,
-				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
 			var browser = new TransparentWebView () {
-				HorizontalOptions = LayoutOptions.Fill,
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.Transparent,
-				WidthRequest = DeviceInfo.Instance.ScreenWidth
+				BackgroundColor = Color.Transparent
 			};
 
 			var htmlSource = new HtmlWebViewSource ();
@@ -87,8 +89,8 @@ namespace bfbnet
 					return parent.Height;
 				}));
 					
-			pageContent.Children.Add (imageholder);
-			pageContent.Children.Add (webviewholder); 
+			pageContent.Children.Add (imageholder, 0, 0);
+			pageContent.Children.Add (webviewholder, 0, 1); 
 
 			this.Content = layout;
 		}
