@@ -20,7 +20,9 @@ namespace bfbnet.iOS
 			UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
 
 			LoadApplication (new App ());
-		
+
+			UIApplication.SharedApplication.SetStatusBarHidden (false, false);
+
 			UITextAttributes attr = UINavigationBar.Appearance.GetTitleTextAttributes();
 			UITextAttributes attr2 = UIBarButtonItem.Appearance.GetTitleTextAttributes(UIControlState.Normal);
 

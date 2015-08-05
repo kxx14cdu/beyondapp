@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>bfb.net</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.pixelbomb.bfb</string>
+	<string>com.pixelbombgames.bfb</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
@@ -83,6 +83,14 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Orbitron.ttf</string>
+	</array>
+	<key>UIStatusBarHidden</key>
+	<false/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
 	</array>
 </dict>
 </plist>

@@ -9,7 +9,12 @@ namespace bfbnet
 		public String characterRightHandSideImage { get; set; }
 		public String characterDescription { get; set; }
 		public String characterStats { get; set; }
-		public List<String> characterScreenshotsConceptArt { get; set; }
+		public List<BeyondImage> characterScreenshotsConceptArt { get; set; }
+	}
+	public class BeyondImage
+	{
+		public byte[] image {get; set; }
+		public String url {get; set; }
 	}
 	public class BeyondRootModel
 	{
@@ -18,8 +23,8 @@ namespace bfbnet
 		public String slideRightImage { get; set; }
 		public String slideContent { get; set; }
 		public List<BeyondCharacterModel> characters { get; set; }
-		public List<String> screenshots { get; set; }
-		public List<String> conceptart { get; set; }
+		public List<BeyondImage> screenshots { get; set; }
+		public List<BeyondImage> conceptart { get; set; }
 		public String copyrightBox { get; set; }
 		public String copyrightInformation { get; set; }
 	}

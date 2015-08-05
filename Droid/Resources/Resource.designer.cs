@@ -26,12 +26,14 @@ namespace bfbnet.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::bfbnet.Droid.Resource.String.ApplicationName;
-			global::Xamarin.Forms.Platform.Resource.String.Hello = global::bfbnet.Droid.Resource.String.Hello;
 			global::PCLStorage.Resource.String.ApplicationName = global::bfbnet.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::bfbnet.Droid.Resource.String.Hello;
 			global::PCLCrypto.Resource.String.ApplicationName = global::bfbnet.Droid.Resource.String.ApplicationName;
 			global::PCLCrypto.Resource.String.Hello = global::bfbnet.Droid.Resource.String.Hello;
+			global::Acr.DeviceInfo.Resource.String.ApplicationName = global::bfbnet.Droid.Resource.String.ApplicationName;
+			global::Acr.DeviceInfo.Resource.String.Hello = global::bfbnet.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Resource.String.ApplicationName = global::bfbnet.Droid.Resource.String.ApplicationName;
+			global::Xamarin.Forms.Platform.Resource.String.Hello = global::bfbnet.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -51,7 +53,22 @@ namespace bfbnet.Droid
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int icon = 2130837504;
+			public const int bg1 = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int bg2 = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int bg3 = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int bg4 = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int icon = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int logo = 2130837509;
 			
 			static Drawable()
 			{

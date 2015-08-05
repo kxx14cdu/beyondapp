@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using System.Threading;
 
 namespace bfbnet
 {
@@ -10,19 +11,22 @@ namespace bfbnet
 			StackLayout buttonList = new StackLayout {
 				Spacing = 15,
 				Padding = new Thickness(15,15,15,0),
-				VerticalOptions = LayoutOptions.Center
+				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
-			NavigationPage.SetBackButtonTitle (this, "Back");
+			ScrollView buttonScroll = new ScrollView {
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+
+			NavigationPage.SetBackButtonTitle (this, "");
 
 			Image backgroundImage = new Image () {
-				Source = "1.jpg",
+				Source = "bg1.jpg",
 				Aspect = Aspect.AspectFill
 			}; 
 
 			Image logo = new Image () {
-				Source = "logo.png",
-				Aspect = Aspect.AspectFit
+				Source = "logo.png"
 			};
 
 			RelativeLayout layout = new RelativeLayout ();
@@ -35,7 +39,7 @@ namespace bfbnet
 					return parent.Height;
 				}));
 
-			layout.Children.Add (buttonList, Constraint.Constant (0), Constraint.Constant (0), 
+			layout.Children.Add (buttonScroll, Constraint.Constant (0), Constraint.Constant (0), 
 				Constraint.RelativeToParent ((parent) => {
 					return parent.Width;
 				}), 
@@ -43,7 +47,7 @@ namespace bfbnet
 					return parent.Height;
 				}));
 
-			this.Content = layout;
+			buttonScroll.Content = buttonList;
 
 			this.Title = "Main Menu";
 
@@ -55,7 +59,7 @@ namespace bfbnet
 					buttonList.Children.Add (new BeyondButton {
 						Text = Page.pageName,
 						Command = new Command (async c => {
-							await Navigation.PushAsync (new StoryPage (Page));
+							await Navigation.PushAsync (new StoryPage (Page),false);
 						})
 					});
 					break;
@@ -66,14 +70,56 @@ namespace bfbnet
 							await Navigation.PushAsync (new CharacterPage (Page));
 						})
 					});
-					break;					
+					break;		
+				case "screenshots":
+					buttonList.Children.Add (new BeyondButton {
+						Text = Page.pageName,
+						Command = new Command (async c => {
+							await Navigation.PushAsync (new ScreenshotsPage (Page));
+						})
+					});
+					break;	
+				case "conceptart":
+					buttonList.Children.Add (new BeyondButton {
+						Text = Page.pageName,
+						Command = new Command (async c => {
+							await Navigation.PushAsync (new ConceptartPage (Page));
+						})
+					});
+					buttonList.Children.Add (new BeyondButton {
+						Text = "YouTube",
+						Command = new Command (async c => {
+							Device.OpenUri(new Uri("http://www.youtube.com/beyondfleshandbloodgame"));
+						})
+					});
+					buttonList.Children.Add (new BeyondButton {
+						Text = "Social Media",
+						Command = new Command (async c => {
+							await Navigation.PushAsync (new SocialPage ());
+						})
+					});
+					break;	
+				case "contact":
+					buttonList.Children.Add (new BeyondButton {
+						Text = "About",
+						Command = new Command (async c => {
+							await Navigation.PushAsync (new ContactPage (Page));
+						})
+					});
+					break;
 				default:
 					buttonList.Children.Add (new BeyondButton {
-						Text = Page.pageName
+						Text = Page.pageName,
+						Command = new Command (async c => {
+							await Navigation.PushAsync (new TextPage (Page));
+						})
 					});
 					break;
 				}
 			}
+
+			this.Content = layout;
+
 		}
 	}
 }

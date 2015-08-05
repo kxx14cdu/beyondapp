@@ -33,6 +33,7 @@ namespace bfbnet
 		 * Asynchronus method
 		 */
 		public static async Task<bool> CheckJSONExists () {
+			try {
 			//Get the local filesystem app folder location
 			IFolder localFolder = FileSystem.Current.LocalStorage;
 			//Check if the local file exists
@@ -40,6 +41,9 @@ namespace bfbnet
 				return true;
 			else
 				return false;
+			} catch (Exception) {
+				return false;
+			}
 		}
 
 		/* ReadLocalJSON
@@ -48,16 +52,24 @@ namespace bfbnet
 		 * Asynchronus method
 		 */
 		public static async Task<String> ReadLocalJSON () {
-			//Get the local filesystem app folder location
-			IFolder localFolder = FileSystem.Current.LocalStorage;
-			//Check if the local file exists
-			if(await CheckJSONExists()) {
-				//Obtain the file "data.json"
-				IFile localFile = await localFolder.GetFileAsync ("data.json");
-				//Return the contents of the file as a string
-				return await localFile.ReadAllTextAsync ();
-			} else {
-				return "none";
+			try {
+				//Get the local filesystem app folder location
+				#if __ANDROID__
+				IFolder localFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+				#else
+				IFolder localFolder = FileSystem.Current.LocalStorage;
+				#endif
+				//Check if the local file exists
+				if(await CheckJSONExists()) {
+					//Obtain the file "data.json"
+					IFile localFile = await localFolder.GetFileAsync ("data.json");
+					//Return the contents of the file as a string
+					return await localFile.ReadAllTextAsync ();
+				} else {
+					return "none";
+				}
+			} catch (Exception) {
+				return "";
 			}
 		}
 	}

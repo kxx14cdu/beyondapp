@@ -5,6 +5,7 @@ using PCLCrypto;
 using PCLStorage;
 using Newtonsoft.Json;
 using Xamarin.Forms.Labs;
+using System.Text.RegularExpressions;
 
 namespace bfbnet
 {
@@ -46,12 +47,23 @@ namespace bfbnet
 			if (localhash != "none") {
 				if (localhash == remotehash)
 					return true;
-				else 
+				else  
 					return false;
 			} else {
 				return false;
 			}
 		}
+
+		public static String stripUnRequiredTags(String input) {
+			String WhiteListPattern = @"</?(?(?=table|td|tr|p|div|tbody|br|span|strong|b|i|em|h1|h2|h3|h4)notag|[a-zA-Z0-9]+)(?:\s[a-zA-Z0-9\-]+=?(?:([""']?).*?\1?)?)*\s*/?>";
+			return Regex.Replace (input, WhiteListPattern, string.Empty);
+		}
+
+		public static String stripAllTags(String input) {
+			String WhiteListPattern = @"</?(?(?=)notag|[a-zA-Z0-9]+)(?:\s[a-zA-Z0-9\-]+=?(?:([""']?).*?\1?)?)*\s*/?>";
+			return Regex.Replace (input, WhiteListPattern, string.Empty);
+		}
+			
 
 		/* ConvertJSONToObjectModel
 		 * Returns an object of type BeyondRootObject deserialized

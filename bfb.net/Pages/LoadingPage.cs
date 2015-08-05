@@ -30,7 +30,7 @@ namespace bfbnet
 				Scale = 2.5
 			};
 			Image backgroundImage = new Image () {
-				Source = "1.jpg",
+				Source = "bg1.jpg",
 				Aspect = Aspect.AspectFill
 			};
 			//Create a new stack layout
@@ -75,55 +75,36 @@ namespace bfbnet
 			Device.BeginInvokeOnMainThread (async () => {
 				if (CrossConnectivity.Current.IsConnected) {
 					progressStatusLabel.Text = "Internet connection detected";
-					//Check that the site is accessible
-					bool result = await CrossConnectivity.Current.IsRemoteReachable("http://beyondfleshandbloodgame.com");
-					if(result){
-						//An internet connection has been detected, therefore
-						//check the local copy of the data against the server.
-						if(await BeyondFileStorage.CheckJSONExists ()) {
-							progressStatusLabel.Text = "Local copy of the data exists";
-							//File exists therefore check the file against the server data
-							progressStatusLabel.Text = "Retrieving remote hash";
-							String remoteHash = await BeyondNetwork.DownloadSHAHash ();
-							//Obtain the local file and store it as string LocalJSON
-							String LocalJSON = await BeyondFileStorage.ReadLocalJSON ();
-							if(BeyondUtility.CompareMD5(remoteHash, LocalJSON)) {
-								progressStatusLabel.Text = "No changes detected. Starting application";
-								//File matches the server, therefore do not download
-								//a new file and start the application using the local copy
-								BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
-								await Navigation.PushAsync(new MenuPage (beyondModel));
-								Navigation.RemovePage(this);
-							} else {
-								//File does not exist therefore download a new copy of the data
-								//and launch the application
-								progressStatusLabel.Text = "Changes detected. Retrieving latest changes";
-								await BeyondFileStorage.CreateLocalJSON (await BeyondNetwork.DownloadJSONData ());
-								if(await BeyondFileStorage.CheckJSONExists ()) {
-									progressStatusLabel.Text = "Starting application";
-									//The file was downloaded successfully, read the file and launch the application
-									BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
-									await Navigation.PushAsync(new MenuPage (beyondModel));
-									Navigation.RemovePage(this);
-								} else {
-									//The file was not downloaded, successfully therefore display an error message
-									await this.DisplayAlert("Error","The file could not be created. Please check that you have enough disk space and try again","Ok");
-								}
-							}
+					//An internet connection has been detected, therefore
+					//check the local copy of the data against the server.
+					if(await BeyondFileStorage.CheckJSONExists ()) {
+						progressStatusLabel.Text = "Local copy of the data exists";
+						//File exists therefore check the file against the server data
+						progressStatusLabel.Text = "Retrieving remote hash";
+						String remoteHash = await BeyondNetwork.DownloadSHAHash ();
+						//Obtain the local file and store it as string LocalJSON
+						String LocalJSON = await BeyondFileStorage.ReadLocalJSON ();
+						if(BeyondUtility.CompareMD5(remoteHash, LocalJSON)) {
+							progressStatusLabel.Text = "No changes detected. Starting application";
+							//File matches the server, therefore do not download
+							//a new file and start the application using the local copy
+							BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
+							await Navigation.PushAsync(new MenuPage (beyondModel));
+							Navigation.RemovePage(this);
 						} else {
-							await this.DisplayAlert("Error","Our website could not be reached. Trying local copy","Ok");
-							progressStatusLabel.Text = "Site unreachable";
+							//File does not exist therefore download a new copy of the data
+							//and launch the application
+							progressStatusLabel.Text = "Changes detected. Retrieving latest changes";
+							await BeyondFileStorage.CreateLocalJSON (await BeyondNetwork.DownloadJSONData ());
 							if(await BeyondFileStorage.CheckJSONExists ()) {
 								progressStatusLabel.Text = "Starting application";
 								//The file was downloaded successfully, read the file and launch the application
-								String LocalJSON = await BeyondFileStorage.ReadLocalJSON();
 								BeyondRootModel[] beyondModel = BeyondUtility.ConvertJSONToObjectModel(LocalJSON);
 								await Navigation.PushAsync(new MenuPage (beyondModel));
 								Navigation.RemovePage(this);
 							} else {
-								progressStatusLabel.Text = "No local copy";
-								//The file does not exist therefore no data is present.
-								await this.DisplayAlert("Error","Our site is unreachable and you do not have a local copy of the data. Please try again in 10 minutes","Ok");
+								//The file was not downloaded, successfully therefore display an error message
+								await this.DisplayAlert("Error","The file could not be created. Please check that you have enough disk space and try again","Ok");
 							}
 						}
 					} else {
